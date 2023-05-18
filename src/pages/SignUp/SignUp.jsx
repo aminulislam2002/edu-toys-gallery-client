@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SignUp = () => {
   const handleSignUp = (event) => {
     const form = event.target;
@@ -37,14 +39,17 @@ const SignUp = () => {
           <input type="password" name="password" placeholder="Enter Your Password" className="input input-bordered" />
         </div>
         <div className="flex justify-center items-center">
-          <button
+          <input
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2 mx-auto my-3"
-          >
-            Sign Up
-          </button>
+            value="Sign Up"
+          />
         </div>
       </form>
+      <hr />
+      <small>
+        Already have an account? <Link to="/signIn">Sign In</Link>
+      </small>
     </div>
   );
 };
