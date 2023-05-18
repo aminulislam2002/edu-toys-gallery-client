@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
 
 import logo from "../../../assets/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavigationBar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const handleLogOutUser = () => {
+    logOutUser()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const navItems = (
     <>
       <li>
@@ -23,9 +37,17 @@ const NavigationBar = () => {
       <li>
         <Link to="/signUp">Sign Up</Link>
       </li>
-      <li>
-        <Link to="/signIn">SingIn</Link>
-      </li>
+      {user ? (
+        <li>
+          <button onClick={handleLogOutUser} className="btn btn-ghost">
+            Log Out
+          </button>
+        </li>
+      ) : (
+        <li>
+          <Link to="/signIn">SingIn</Link>
+        </li>
+      )}
     </>
   );
 
@@ -57,7 +79,11 @@ const NavigationBar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        {user ? (
+          <img className="w-20 h-10 rounded-full" src={user?.photoURL} alt={user?.displayName} title={user?.displayName} />
+        ) : (
+          <Link to="/logIn">Profile</Link>
+        )}
       </div>
     </div>
   );
