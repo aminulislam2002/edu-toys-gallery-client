@@ -15,18 +15,28 @@ const SignIn = () => {
           <label className="label">
             <span className="label-text">Your Email</span>
           </label>
-          <input type="email" name="email" placeholder="Enter Your Email" className="input input-bordered" />
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Your Email"
+            className="input input-xs sm:input-sm md:input-md lg:input-lg input-bordered"
+          />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" name="password" placeholder="Enter Your Password" className="input input-bordered" />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Your Password"
+            className="input input-xs sm:input-sm md:input-md lg:input-lg input-bordered"
+          />
         </div>
         <div className="flex justify-center items-center">
           <input
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2 mx-auto my-3"
+            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-blue-500 hover:bg-blue-700 border-none my-3"
             value="Sign In"
           />
         </div>
@@ -35,6 +45,10 @@ const SignIn = () => {
       <small>
         New to ABC Toy Shop? <Link to="/signUp">Sign Up</Link>
       </small>
+      <p className="text-center">Or login with</p>
+      <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-blue-500 hover:bg-blue-700 border-none my-3">
+        G
+      </button>
     </div>
   );
 };
