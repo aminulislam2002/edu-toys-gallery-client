@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignIn = () => {
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, createUserWithGoogle } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
 
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -19,6 +22,19 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+
+  const handleGoogleSingIn = () => {
+    createUserWithGoogle(googleProvider)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
       });
   };
 
@@ -60,8 +76,11 @@ const SignIn = () => {
         New to ABC Toy Shop? <Link to="/signUp">Sign Up</Link>
       </small>
       <p className="text-center">Or login with</p>
-      <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-blue-500 hover:bg-blue-700 border-none my-3">
-        G
+      <button
+        onClick={handleGoogleSingIn}
+        className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-white hover:bg-white text-black border my-3"
+      >
+        <FaGoogle className="text-blue-500"></FaGoogle> Continue with Google
       </button>
     </div>
   );

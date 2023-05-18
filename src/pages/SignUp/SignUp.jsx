@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { FaGoogle } from "react-icons/fa";
 
 const SignUp = () => {
-  const { createUserWithEmail, CreateUserWithGoogle, updateUserProfile } = useContext(AuthContext);
+  const { createUserWithEmail, createUserWithGoogle, updateUserProfile } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
 
   const handleSignUp = (event) => {
@@ -26,7 +27,7 @@ const SignUp = () => {
   };
 
   const handleGoogleSingIn = () => {
-    CreateUserWithGoogle(googleProvider)
+    createUserWithGoogle(googleProvider)
       .then((result) => {
         const createdUser = result.user;
         console.log(createdUser);
@@ -98,8 +99,11 @@ const SignUp = () => {
         Already have an account? <Link to="/signIn">Sign In</Link>
       </small>
       <p className="text-center">Or login with</p>
-      <button onClick={handleGoogleSingIn} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-blue-500 hover:bg-blue-700 border-none my-3">
-        G
+      <button
+        onClick={handleGoogleSingIn}
+        className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-white hover:bg-white text-black border my-3"
+      >
+        <FaGoogle className="text-blue-500"></FaGoogle> Continue with Google
       </button>
     </div>
   );
