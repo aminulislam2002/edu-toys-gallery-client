@@ -1,7 +1,9 @@
+import ImageGallery from "../ImageGallery/ImageGallery";
+
 const Home = () => {
   return (
-    <div>
-      <h1>This is Home Page</h1>
+    <div className="mx-10">
+      <ImageGallery></ImageGallery>
     </div>
   );
 };
