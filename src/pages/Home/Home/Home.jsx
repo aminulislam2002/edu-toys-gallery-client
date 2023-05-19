@@ -2,7 +2,7 @@ import ImageGallery from "../ImageGallery/ImageGallery";
 
 const Home = () => {
   return (
-    <div className="mx-10">
+    <div>
       <ImageGallery></ImageGallery>
     </div>
   );
