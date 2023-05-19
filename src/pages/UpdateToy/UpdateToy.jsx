@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../providers/AuthProvider";
 
-const AddToy = () => {
-  const { user } = useContext(AuthContext);
-  const handleAddToy = (event) => {
+const UpdateToy = () => {
+  const toy = useLoaderData();
+  const { _id, name, category, title, photoURL, sellerName, price, sellerEmail, quantity, description, ratings } = toy;
+
+  const handleUpdateToy = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -18,23 +19,23 @@ const AddToy = () => {
     const description = form.description.value;
     const ratings = form.ratings.value;
 
-    const newToy = { name, category, title, photoURL, sellerName, price, sellerEmail, quantity, description, ratings };
-    console.log(newToy);
+    const updatedToy = { name, category, title, photoURL, sellerName, price, sellerEmail, quantity, description, ratings };
+    console.log(updatedToy);
 
-    fetch("http://localhost:5000/toy", {
-      method: "POST",
+    fetch(`http://localhost:5000/toy/${_id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newToy),
+      body: JSON.stringify(updatedToy),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          console.log(data);
+        console.log(data);
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Add a toy successfully!",
+            text: "Update a toy successfully!",
             icon: "Success",
             confirmButtonText: "Okay!",
           });
@@ -44,7 +45,7 @@ const AddToy = () => {
 
   return (
     <div className="py-10 mx-20">
-      <form onSubmit={handleAddToy}>
+      <form onSubmit={handleUpdateToy}>
         <div className="flex">
           <div className="form-control w-1/2 mx-auto">
             <label className="label">
@@ -54,7 +55,7 @@ const AddToy = () => {
               <input
                 name="name"
                 type="text"
-                defaultValue="Toy Name"
+                defaultValue={name}
                 placeholder="Enter Toy Name"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -68,7 +69,7 @@ const AddToy = () => {
             <div className="input-group">
               <select name="category" className="select select-bordered w-3/4 mx-auto" defaultValue="default">
                 <option disabled value="default">
-                  Pick category
+                  {category}
                 </option>
                 <option>Science Kits</option>
                 <option>Math Learning Toys</option>
@@ -87,7 +88,7 @@ const AddToy = () => {
               <input
                 name="title"
                 type="text"
-                defaultValue="Toy Title"
+                defaultValue={title}
                 placeholder="Enter toy title"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -102,7 +103,7 @@ const AddToy = () => {
               <input
                 name="photoURL"
                 type="url"
-                defaultValue="https://i.ibb.co/RpmkBbM/unnamed.png"
+                defaultValue={photoURL}
                 placeholder="Enter Toy Image URL"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -120,7 +121,7 @@ const AddToy = () => {
               <input
                 name="sellerName"
                 type="text"
-                value={user?.displayName}
+                defaultValue={sellerName}
                 placeholder="Enter Seller Name"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -135,7 +136,7 @@ const AddToy = () => {
               <input
                 name="price"
                 type="number"
-                defaultValue="500"
+                defaultValue={price}
                 placeholder="Enter Toy Price"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -153,7 +154,7 @@ const AddToy = () => {
               <input
                 name="sellerEmail"
                 type="email"
-                value={user?.email}
+                defaultValue={sellerEmail}
                 placeholder="Enter Seller Email"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -168,7 +169,7 @@ const AddToy = () => {
               <input
                 name="quantity"
                 type="number"
-                defaultValue="100"
+                defaultValue={quantity}
                 placeholder="Enter Available Quantity"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -186,7 +187,7 @@ const AddToy = () => {
               <input
                 name="description"
                 type="text"
-                defaultValue="Toy Description"
+                defaultValue={description}
                 placeholder="Enter Description"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -201,7 +202,7 @@ const AddToy = () => {
               <input
                 name="ratings"
                 type="number"
-                defaultValue="4"
+                defaultValue={ratings}
                 placeholder="Enter Toy Ratings"
                 className="input input-bordered w-3/4 mx-auto"
                 required
@@ -215,7 +216,7 @@ const AddToy = () => {
               <input
                 type="submit"
                 className="btn btn-xs sm:btn-sm md:btn-md bg-blue-500 hover:bg-blue-700 border-none my-10 w-full mx-auto"
-                value="Submit"
+                value="Update"
               />
             </label>
           </div>
@@ -225,4 +226,4 @@ const AddToy = () => {
   );
 };
 
-export default AddToy;
+export default UpdateToy;
