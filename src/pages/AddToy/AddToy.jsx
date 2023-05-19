@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
   const handleForm = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -53,6 +56,7 @@ const AddToy = () => {
                 defaultValue="Toy Name"
                 placeholder="Enter Toy Name"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -85,6 +89,7 @@ const AddToy = () => {
                 defaultValue="Toy Title"
                 placeholder="Enter toy title"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -99,6 +104,7 @@ const AddToy = () => {
                 defaultValue="https://i.ibb.co/RpmkBbM/unnamed.png"
                 placeholder="Enter Toy Image URL"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -113,9 +119,10 @@ const AddToy = () => {
               <input
                 name="sellerName"
                 type="text"
-                defaultValue="Seller Name"
+                value={user?.displayName}
                 placeholder="Enter Seller Name"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -130,6 +137,7 @@ const AddToy = () => {
                 defaultValue="500"
                 placeholder="Enter Toy Price"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -144,9 +152,10 @@ const AddToy = () => {
               <input
                 name="sellerEmail"
                 type="email"
-                defaultValue="aminul@gmail.com"
+                value={user?.email}
                 placeholder="Enter Seller Email"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -161,6 +170,7 @@ const AddToy = () => {
                 defaultValue="100"
                 placeholder="Enter Available Quantity"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -178,6 +188,7 @@ const AddToy = () => {
                 defaultValue="Toy Description"
                 placeholder="Enter Description"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
@@ -192,6 +203,7 @@ const AddToy = () => {
                 defaultValue="4"
                 placeholder="Enter Toy Ratings"
                 className="input input-bordered w-3/4 mx-auto"
+                required
               />
             </label>
           </div>
