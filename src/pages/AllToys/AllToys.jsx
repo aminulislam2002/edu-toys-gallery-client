@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
   const toys = useLoaderData();
@@ -11,6 +11,7 @@ const AllToys = () => {
               <th></th>
               <th>Name</th>
               <th>Seller Name</th>
+              <th>Seller Email</th>
               <th>Category</th>
               <th>Price</th>
               <th>Quantity</th>
@@ -23,13 +24,16 @@ const AllToys = () => {
                 <th>{index + 1}</th>
                 <td>{toy.name}</td>
                 <td>{toy.sellerName}</td>
+                <td>{toy.sellerEmail}</td>
                 <td>{toy.category}</td>
                 <td>$ {toy.price}</td>
                 <td>{toy.quantity}</td>
                 <td>
-                  <button type="submit" className="btn">
-                    View Details
-                  </button>
+                  <Link to={`/singleToyDetails/${toy._id}`}>
+                    <button type="submit" className="btn">
+                      View Details
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
