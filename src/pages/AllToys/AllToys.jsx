@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
   const toys = useLoaderData();
+
   return (
     <div className="mx-10 py-10">
       <div className="overflow-x-auto">
@@ -30,7 +31,7 @@ const AllToys = () => {
                 <td>{toy.quantity}</td>
                 <td>
                   <Link to={`/singleToyDetails/${toy._id}`}>
-                    <button type="submit" className="btn">
+                    <button type="submit" className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">
                       View Details
                     </button>
                   </Link>

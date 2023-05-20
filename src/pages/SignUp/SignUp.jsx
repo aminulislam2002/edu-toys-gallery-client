@@ -40,68 +40,68 @@ const SignUp = () => {
   };
 
   return (
-    <div className="w-1/3 mx-auto py-5">
+    <div className="w-1/3 mx-auto py-5 my-10 rounded-xl px-10 bg-gradient-to-r from-purple-500 to-indigo-500">
       <form onSubmit={handleSignUp}>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Your Name</span>
+            <span className="label-text text-white text-[18px]">Your Name</span>
           </label>
           <input
             type="text"
             name="name"
             placeholder="Enter Your Name"
-            className="input input-xs sm:input-sm md:input-md lg:input-lg input-bordered"
+            className="input input-xs sm:input-sm md:input-md input-bordered"
           />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Your Email</span>
+            <span className="label-text text-white text-[18px]">Your Email</span>
           </label>
           <input
             type="email"
             name="email"
             placeholder="Enter Your Email"
-            className="input input-xs sm:input-sm md:input-md lg:input-lg input-bordered"
+            className="input input-xs sm:input-sm md:input-md input-bordered"
           />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Your Photo URL</span>
+            <span className="label-text text-white text-[18px]">Your Photo URL</span>
           </label>
           <input
             type="url"
             name="photoURL"
             placeholder="Enter Your Photo url"
-            className="input input-xs sm:input-sm md:input-md lg:input-lg input-bordered"
+            className="input input-xs sm:input-sm md:input-md input-bordered"
           />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Password</span>
+            <span className="label-text text-white text-[18px]">Password</span>
           </label>
 
           <input
             type="password"
             name="password"
             placeholder="Enter Your Password"
-            className="input input-xs sm:input-sm md:input-md lg:input-lg input-bordered"
+            className="input input-xs sm:input-sm md:input-md input-bordered"
           />
         </div>
         <div className="flex justify-center items-center">
           <input
             type="submit"
-            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-blue-500 hover:bg-blue-700 border-none my-3"
+            className="btn btn-xs sm:btn-sm md:btn-md w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white border-none my-3 hover:from-blue-700 hover:to-blue-900"
             value="Sign Up"
           />
         </div>
       </form>
-      <small>
-        Already have an account? <Link to="/signIn">Sign In</Link>
-      </small>
-      <p className="text-center">Or login with</p>
+      <p className="text-white">
+        Already have an account? <Link className="text-blue-800" to="/signIn">Sign In</Link>
+      </p>
+      <p className="text-center text-white">Or login with</p>
       <button
         onClick={handleGoogleSingIn}
-        className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg w-full bg-white hover:bg-white text-black border my-3"
+        className="btn btn-xs sm:btn-sm md:btn-md w-full border-none bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 hover:from-pink-500 hover:via-red-500 hover:to-yellow-400 text-white border my-3"
       >
         <FaGoogle className="text-blue-500"></FaGoogle> Continue with Google
       </button>

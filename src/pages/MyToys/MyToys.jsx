@@ -20,7 +20,7 @@ const MyToys = () => {
     <div className="mx-10">
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {myToys.map((myToy) => (
-          <MyToyCard key={myToy._id} myToy={myToy}></MyToyCard>
+          <MyToyCard key={myToy._id} myToy={myToy} myToys={myToys} setMyToys={setMyToys}></MyToyCard>
         ))}
       </div>
     </div>

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyToyCard = ({ myToy }) => {
-  const { _id, name, photoURL, sellerName, price, sellerEmail, quantity } = myToy;
+const MyToyCard = ({ myToy, myToys, setMyToys }) => {
+  const { _id, name, image, sellerName, price, sellerEmail, quantity } = myToy;
 
-  const handleDeleteToy = (_id) => {
-    console.log(_id);
+  const handleDeleteToy = (id) => {
+    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -16,7 +16,7 @@ const MyToyCard = ({ myToy }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toy/${_id}`, {
+        fetch(`http://localhost:5000/toy/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -24,6 +24,8 @@ const MyToyCard = ({ myToy }) => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+              const remaining = myToys.filter((myToy) => myToy._id !== id);
+              setMyToys(remaining);
             }
           });
       }
@@ -34,13 +36,10 @@ const MyToyCard = ({ myToy }) => {
     <div className="py-5 flex justify-center items-center">
       <div className="card hover:shadow-2xl w-full bg-base-200 shadow-xl">
         <figure className="bg-red-500">
-          <img src={photoURL} className="w-full h-52" alt="image" />
+          <img src={image} className="w-full h-52" alt="image" />
         </figure>
 
-        <h2 className="card-title p-3">
-          {name}
-          <div className="badge badge-secondary">NEW</div>
-        </h2>
+        <h2 className="card-title p-3">{name}</h2>
 
         <div className="flex flex-col gap-5 p-3">
           <table>

@@ -1,13 +1,56 @@
+import { HiOutlinePaperAirplane } from "react-icons/hi2";
 import { useLoaderData } from "react-router-dom";
 
 const SingleToyDetails = () => {
   const singleToy = useLoaderData();
-  const { _id, name, category, title, photoURL, sellerName, price, sellerEmail, quantity, description, ratings } = singleToy;
-  console.log(singleToy);
-  
+  const { name, ratings, description, sellerName, sellerEmail, quantity, price, image } = singleToy;
+
   return (
-    <div>
-      <h1>Single Toy Details {singleToy.name}</h1>
+    <div className="card w-11/12 mx-auto my-10 bg-slate-300">
+      <div className="flex">
+        <div className="w-1/2">
+          <div className="w-11/12 mx-auto h-80">
+            <img className="w-full h-full object-cover" src={image} alt="Toy" />
+          </div>
+        </div>
+        <div className="w-1/2">
+          <div className="w-3/4 mx-auto h-80">
+            <h1 className="text-4xl font-semibold">{name}</h1>
+            <div className="text-sm text-gray-500 mb-4">Ratings: {ratings}</div>
+            <p className="py-4">{description}</p>
+            <table className="mb-4">
+              <tbody>
+                <tr>
+                  <td className="text-sm font-semibold text-gray-500 pr-2">Seller:</td>
+                  <td>{sellerName}</td>
+                </tr>
+                <tr>
+                  <td className="text-sm font-semibold text-gray-500 pr-2">Seller Email:</td>
+                  <td>{sellerEmail}</td>
+                </tr>
+                <tr>
+                  <td className="text-sm font-semibold text-gray-500 pr-2">Available Quantity:</td>
+                  <td>{quantity}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className="text-4xl py-6 text-red-500 font-semibold">${price}</div>
+
+            <div className="flex gap-6 mb-4">
+              <button className="btn w-1/2 bg-orange-500 hover:bg-orange-700">Add To Cart</button>
+              <button className="btn w-1/2 bg-red-500 hover:bg-red-700">Buy Now</button>
+            </div>
+
+            <div className="flex gap-5">
+              <input type="text" placeholder="Write a comment..." className="w-3/4 mx-auto rounded-full px-4 py-2" />
+              <button className="btn send-comment">
+                <HiOutlinePaperAirplane className="text-black w-8 h-8" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

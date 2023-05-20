@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-
-import logo from "../../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import logo from "../../../assets/logo.png";
 
 const NavigationBar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -20,42 +19,56 @@ const NavigationBar = () => {
   const navItems = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/" className="text-white hover:text-gray-300">
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/allToys">All Toys</Link>
+        <Link to="/allToys" className="text-white hover:text-gray-300">
+          All Toys
+        </Link>
       </li>
       <li>
-        <Link to="/myToys">My Toys</Link>
+        <Link to="/myToys" className="text-white hover:text-gray-300">
+          My Toys
+        </Link>
       </li>
       <li>
-        <Link to="/addToy">Add a Toy</Link>
+        <Link to="/addToy" className="text-white hover:text-gray-300">
+          Add a Toy
+        </Link>
       </li>
       <li>
-        <Link to="/blogs">Blogs</Link>
+        <Link to="/blogs" className="text-white hover:text-gray-300">
+          Blogs
+        </Link>
       </li>
       <li>
-        <Link to="/signUp">Sign Up</Link>
+        <Link to="/signUp" className="text-white hover:text-gray-300">
+          Sign Up
+        </Link>
       </li>
       {user ? (
         <li>
-          <button onClick={handleLogOutUser} className="btn btn-ghost">
+          <button onClick={handleLogOutUser} className="btn btn-ghost text-white hover:text-gray-300">
             Log Out
           </button>
         </li>
       ) : (
         <li>
-          <Link to="/signIn">SingIn</Link>
+          <Link to="/signIn" className="text-white hover:text-gray-300">
+            SingIn
+          </Link>
         </li>
       )}
     </>
   );
 
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar bg-blue-500">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -66,13 +79,13 @@ const NavigationBar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </label>
-          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-purple-600 rounded-box w-52">
             {navItems}
           </ul>
         </div>
         <div>
           <img src={logo} className="w-40 h-14" alt="" />
-          <h3 className="text-center font-semibold text-2xl text-purple-800">ABC TOY SHOPE</h3>
+          <h3 className="text-center font-semibold text-2xl text-red-600">ABC TOY SHOP</h3>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -82,7 +95,9 @@ const NavigationBar = () => {
         {user ? (
           <img className="w-20 h-10 rounded-full" src={user?.photoURL} alt={user?.displayName} title={user?.displayName} />
         ) : (
-          <Link to="/logIn">Profile</Link>
+          <Link to="/logIn" className="text-white hover:text-gray-300">
+            Profile
+          </Link>
         )}
       </div>
     </div>
