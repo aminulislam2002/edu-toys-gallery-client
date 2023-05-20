@@ -1,7 +1,34 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyToyCard = ({ myToy }) => {
   const { _id, name, photoURL, sellerName, price, sellerEmail, quantity } = myToy;
+
+  const handleDeleteToy = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/toy/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div className="py-5 flex justify-center items-center">
@@ -49,10 +76,9 @@ const MyToyCard = ({ myToy }) => {
             <button className="btn bg-yellow-500 hover:bg-yellow-700 border-none ">
               <Link to={`/updateToy/${_id}`}>Update</Link>
             </button>
-
-            <Link>
-              <button className="btn bg-red-500 hover:bg-red-700 border-none">Delete</button>
-            </Link>
+            <button onClick={() => handleDeleteToy(_id)} className="btn bg-red-500 hover:bg-red-700 border-none">
+              Delete
+            </button>
           </div>
         </div>
       </div>
