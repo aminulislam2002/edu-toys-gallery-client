@@ -23,6 +23,16 @@ const ImagesGallery = () => {
 
   return (
     <div className="md:mx-20 sm:mx-10 mx-5 my-10">
+      <div className="bg-blue-500 py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-white text-center">
+            <h1 className="text-4xl font-bold mb-4">Our latest product gallery</h1>
+            <p className="text-lg w-2/3 mx-auto">
+            Welcome to our captivating Photo Gallery at Edu Toys Gallery! Immerse yourself in a visual journey through our extensive collection of educational toys.
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 gap-3">
         {toys.slice(0, showMoreToy).map((toy) => (
           <div key={toy._id}>

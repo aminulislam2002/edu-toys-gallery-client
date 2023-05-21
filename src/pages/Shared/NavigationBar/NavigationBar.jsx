@@ -92,7 +92,7 @@ const NavigationBar = () => {
         <div className="flex items-center">
           <img src={logo} className="w-10 h-10 rounded-xl mr-2" alt="" />
           <h3 className="text-3xl font-bold">
-            <span className="text-purple-600">ABC</span> TOY SHOP
+            <span className="text-purple-600">EDU</span> Toys Gallery
           </h3>
         </div>
       </div>
