@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
+  const [searchName, setSearchName] = useState('');
 
   const url = `http://localhost:5000/myToys?sellerEmail=${user?.email}`;
+  
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -46,8 +47,66 @@ const MyToys = () => {
     });
   };
 
+  const handleSearch = () => {
+    const url = `http://localhost:5000/myToys?name=${(searchName)}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setMyToys(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <div className="mx-10 py-10">
+      <div className="py-5 flex justify-center gap-10">
+        <div className="form-control">
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Search…"
+              // value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+              className="input input-bordered w-full"
+            />
+            <button onClick={handleSearch} className="btn btn-square">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div>
+          <div className="form-control">
+            <div className="input-group">
+              <select className="select select-bordered">
+                <option disabled selected>
+                  Sort
+                </option>
+                <option>
+                  <button>Price Ascending to Descending</button>
+                </option>
+                <option>
+                  <button>Price Descending to Ascending</button>
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="overflow-x-auto">
         <table className="table table-compact w-full">
           <thead>
