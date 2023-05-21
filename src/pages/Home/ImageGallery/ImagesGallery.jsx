@@ -23,17 +23,17 @@ const ImagesGallery = () => {
 
   return (
     <div className="md:mx-20 sm:mx-10 mx-5 my-10">
-      <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2">
+      <div className="grid md:grid-cols-6 sm:grid-cols-3 grid-cols-2 gap-3">
         {toys.slice(0, showMoreToy).map((toy) => (
           <div key={toy._id}>
-            <div className="p-3">
-              <img className="w-44 h-28 mx-auto" src={toy.image} alt="" />
-              <h1>{toy.name}</h1>
+            <div data-aos="fade-up" className="p-3 bg-white rounded shadow">
+              <img className="w-44 h-28 mx-auto object-cover rounded" src={toy.image} alt="" />
+              <h1 className="text-center mt-2">{toy.name}</h1>
             </div>
           </div>
         ))}
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center my-10">
         <button
           onClick={handleShowMoreToy}
           className="btn bg-green-500 hover:bg-green-600 border-none text-white font-bold py-2 px-4 rounded"
