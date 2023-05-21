@@ -15,7 +15,7 @@ const ShopByCategory = () => {
       setCategoryData(data);
       console.log(data);
     } catch (error) {
-      console.error("Error fetching category data:", error);
+      console.log("Error fetching category data:", error);
     }
   };
 

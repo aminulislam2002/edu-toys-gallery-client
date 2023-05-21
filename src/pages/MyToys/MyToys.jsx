@@ -6,10 +6,12 @@ import Swal from "sweetalert2";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
-  const [searchName, setSearchName] = useState('');
+  const [searchName, setSearchName] = useState("");
+  const [sortedData, setSortedData] = useState([...myToys]);
+  const [ascendingData, setAscendingData] = useState(false);
 
   const url = `http://localhost:5000/myToys?sellerEmail=${user?.email}`;
-  
+
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -48,7 +50,7 @@ const MyToys = () => {
   };
 
   const handleSearch = () => {
-    const url = `http://localhost:5000/myToys?name=${(searchName)}`;
+    const url = `http://localhost:5000/myToys?name=${searchName}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -58,6 +60,16 @@ const MyToys = () => {
         console.error("Error:", error);
       });
   };
+
+  const handleAscendingDescending = () => {
+    const sorted = ascendingData ? sortedData.reverse() : [...sortedData].sort((a, b) => a.price - b.price);
+    setSortedData(sorted);
+    setAscendingData(!ascendingData);
+  };
+
+  useEffect(() => {
+    setSortedData(myToys);
+  }, [myToys]);
 
   return (
     <div className="mx-10 py-10">
@@ -89,22 +101,13 @@ const MyToys = () => {
             </button>
           </div>
         </div>
-        <div>
-          <div className="form-control">
-            <div className="input-group">
-              <select className="select select-bordered">
-                <option disabled selected>
-                  Sort
-                </option>
-                <option>
-                  <button>Price Ascending to Descending</button>
-                </option>
-                <option>
-                  <button>Price Descending to Ascending</button>
-                </option>
-              </select>
-            </div>
-          </div>
+        <div className="flex justify-center items-center gap-10">
+          <button
+            className="btn border-none bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 hover:from-pink-500 hover:via-red-500 hover:to-yellow-400 text-white"
+            onClick={handleAscendingDescending}
+          >
+            {ascendingData ? "Sort Descending" : "Sort Ascending"}
+          </button>
         </div>
       </div>
       <div className="overflow-x-auto">
@@ -125,7 +128,7 @@ const MyToys = () => {
             </tr>
           </thead>
           <tbody>
-            {myToys.map((toy, index) => (
+            {sortedData.map((toy, index) => (
               <tr key={toy._id}>
                 <th>{index + 1}</th>
                 <td>{toy.name}</td>
