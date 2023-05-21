@@ -241,7 +241,7 @@ const AddToy = () => {
             <input
               type="submit"
               className="btn btn-primary py-2 px-4 rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-700 hover:border-none mt-10"
-              value="Update"
+              value="Add A Toy"
             />
           </label>
         </div>

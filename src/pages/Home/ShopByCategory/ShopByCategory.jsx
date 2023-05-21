@@ -32,7 +32,21 @@ const ShopByCategory = () => {
             <button onClick={() => handleCategoryData("Math Learning Toys")}>Math Learning Toys</button>
           </Tab>
         </TabList>
-        <TabPanel></TabPanel>
+
+        {categoryData.map((category) => {
+          <TabPanel key={category._id}>
+            <div>{category?.name}</div>
+          </TabPanel>;
+        })}
+
+        
+        {/* <TabPanel>
+          Render the categoryData here
+          {categoryData.map((item) => (
+            <div key={item._id}>{item.name}</div>
+          ))}
+        </TabPanel> */}
+
       </Tabs>
     </div>
   );
