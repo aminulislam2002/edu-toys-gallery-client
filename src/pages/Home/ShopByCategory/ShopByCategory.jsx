@@ -25,8 +25,10 @@ const ShopByCategory = () => {
           <div className="text-white text-center">
             <h1 className="text-4xl font-bold mb-4">Shop By Category</h1>
             <p className="text-lg w-2/3 mx-auto">
-              Welcome to our captivating Photo Gallery at Edu Toys Gallery! Immerse yourself in a visual journey through our
-              extensive collection of educational toys.
+              The Shop by Category section on the EDU Toys Gallery website provides a convenient and organized way for
+              visitors to explore and browse our extensive range of educational toys and resources. This section is designed
+              to help customers quickly locate products that align with specific subjects or areas of interest, making their
+              shopping experience efficient and enjoyable.
             </p>
           </div>
         </div>
