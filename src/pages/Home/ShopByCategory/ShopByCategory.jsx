@@ -18,9 +18,9 @@ const ShopByCategory = () => {
   };
 
   return (
-    <div className="mx-20 my-10">
+    <div className="md:mx-20 sm:mx-10 mx-5 my-10">
       <Tabs>
-        <TabList className="flex justify-around bg-red-300 py-3">
+        <TabList className="flex justify-around bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 hover:from-pink-500 hover:via-red-500 hover:to-yellow-400 text-white py-3">
           <Tab>
             <button onClick={() => handleCategoryData("Science Kits")}>Science Kits</button>
           </Tab>
@@ -33,51 +33,43 @@ const ShopByCategory = () => {
         </TabList>
 
         <TabPanel>
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-4 grid-cols-2 gap-5">
             {categoryData &&
               categoryData.map((category) => (
-                <div key={category._id}>
-                  <div className="py-5 flex justify-center items-center">
-                    <div className="card hover:shadow-2xl w-full bg-base-200 shadow-xl">
-                      <figure className="bg-red-500">
-                        <img src={category.image} className="w-full h-52" alt="image" />
+                <div key={category._id} className="w-full">
+                  <div className="py-5 flex justify-center">
+                    <div className="card shadow-lg rounded-lg overflow-hidden">
+                      <figure>
+                        <img src={category.image} className="w-full h-40 object-cover" alt="image" />
                       </figure>
 
-                      <h2 className="card-title p-3">{category.name}</h2>
+                      <div className="p-4">
+                        <h2 className="text-xl font-semibold">{category.name}</h2>
 
-                      <div className="flex flex-col gap-5 p-3">
-                        <table>
+                        <table className="mt-4">
                           <tbody>
                             <tr>
-                              <td>
-                                <span>Price</span>
-                              </td>
-                              <td>: $ {category.price}</td>
+                              <td className="font-medium">Price:</td>
+                              <td>$ {category.price}</td>
                             </tr>
                             <tr>
-                              <td>
-                                <span>Available</span>
-                              </td>
-                              <td>: {category.quantity} pcs</td>
+                              <td className="font-medium">Available:</td>
+                              <td>{category.quantity} pcs</td>
                             </tr>
                             <tr>
-                              <td>
-                                <span>Seller Name</span>
-                              </td>
-                              <td>: {category.sellerName}</td>
+                              <td className="font-medium">Seller Name:</td>
+                              <td>{category.sellerName}</td>
                             </tr>
                             <tr>
-                              <td>
-                                <span>Seller Email</span>
-                              </td>
-                              <td>: {category.sellerEmail}</td>
+                              <td className="font-medium">Seller Email:</td>
+                              <td>{category.sellerEmail}</td>
                             </tr>
                           </tbody>
                         </table>
 
-                        <div className="flex justify-center items-center gap-4">
-                          <button className="btn w-1/2 border-none bg-orange-500 hover:bg-orange-700">Add To Cart</button>
-                          <button className="btn w-1/2 border-none bg-red-500 hover:bg-red-700">
+                        <div className="flex justify-center items-center mt-6">
+                          <button className="btn border-none mr-2 bg-orange-500 hover:bg-orange-700">Add To Cart</button>
+                          <button className="btn border-none bg-red-500 hover:bg-red-700">
                             <Link to={`/singleToyDetails/${category._id}`}>View Details</Link>
                           </button>
                         </div>

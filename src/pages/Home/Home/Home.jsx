@@ -1,10 +1,10 @@
-import ImageGallery from "../ImageGallery/ImageGallery";
+import ImagesGallery from "../ImageGallery/ImagesGallery";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
 
 const Home = () => {
   return (
     <div>
-      <ImageGallery></ImageGallery>
+      <ImagesGallery></ImagesGallery>
       <ShopByCategory></ShopByCategory>
     </div>
   );
