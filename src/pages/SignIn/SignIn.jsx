@@ -44,51 +44,54 @@ const SignIn = () => {
   };
 
   return (
-    <div className="w-1/3 mx-auto py-5 my-10 rounded-xl px-10 bg-gradient-to-r from-purple-500 to-indigo-500">
-      <form onSubmit={handleSignIn}>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text text-white text-[18px]">Your Email</span>
-          </label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Your Email"
-            className="input input-xs sm:input-sm md:input-md input-bordered"
-          />
-        </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text text-white text-[18px]">Password</span>
-          </label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter Your Password"
-            className="input input-xs sm:input-sm md:input-md input-bordered"
-          />
-        </div>
-        <div className="flex justify-center items-center">
-          <input
-            type="submit"
-            className="btn btn-xs sm:btn-sm md:btn-md w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white border-none my-3 hover:from-blue-700 hover:to-blue-900"
-            value="Sign In"
-          />
-        </div>
-      </form>
-      <p className="text-white">
-        New to ABC Toy Shop?
-        <Link className="text-blue-800" to="/signUp">
-          Sign Up
-        </Link>
-      </p>
-      <p className="text-center text-white">Or login with</p>
-      <button
-        onClick={handleGoogleSingIn}
-        className="btn btn-xs sm:btn-sm md:btn-md w-full border-none bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 hover:from-pink-500 hover:via-red-500 hover:to-yellow-400 text-white border my-3"
-      >
-        <FaGoogle className="text-white mr-1"></FaGoogle> Continue with Google
-      </button>
+    <div className=" py-5 my-10">
+      <div className="w-1/3 mx-auto rounded-xl px-10 bg-gradient-to-r from-purple-500 to-indigo-500">
+        <h1 className="text-4xl text-white text-center font-bold mb-4 py-2">Sign In Now</h1>
+        <form onSubmit={handleSignIn}>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-white text-[18px]">Your Email</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              className="input input-xs sm:input-sm md:input-md input-bordered"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-white text-[18px]">Password</span>
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter Your Password"
+              className="input input-xs sm:input-sm md:input-md input-bordered"
+            />
+          </div>
+          <div className="flex justify-center items-center">
+            <input
+              type="submit"
+              className="btn btn-xs sm:btn-sm md:btn-md w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white border-none my-3 hover:from-blue-700 hover:to-blue-900"
+              value="Sign In"
+            />
+          </div>
+        </form>
+        <p className="text-white">
+          New to ABC Toy Shop?
+          <Link className="text-blue-800" to="/signUp">
+            Sign Up
+          </Link>
+        </p>
+        <p className="text-center text-white">Or login with</p>
+        <button
+          onClick={handleGoogleSingIn}
+          className="btn btn-xs sm:btn-sm md:btn-md w-full border-none bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 hover:from-pink-500 hover:via-red-500 hover:to-yellow-400 text-white border my-3"
+        >
+          <FaGoogle className="text-white mr-1"></FaGoogle> Continue with Google
+        </button>
+      </div>
     </div>
   );
 };

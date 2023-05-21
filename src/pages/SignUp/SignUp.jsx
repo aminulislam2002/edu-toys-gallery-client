@@ -41,6 +41,7 @@ const SignUp = () => {
 
   return (
     <div className="w-1/3 mx-auto py-5 my-10 rounded-xl px-10 bg-gradient-to-r from-purple-500 to-indigo-500">
+      <h1 className="text-4xl text-white text-center font-bold mb-4 py-2">Sign Up Now</h1>
       <form onSubmit={handleSignUp}>
         <div className="form-control">
           <label className="label">

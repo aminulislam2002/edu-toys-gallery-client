@@ -6,7 +6,7 @@ import Typewriter from "typewriter-effect/dist/core";
 const Footer = () => {
   useEffect(() => {
     const typewriter = new Typewriter("#typewriter", {
-      strings: ["ABC", "TOY", "SHOP"],
+      strings: ["EDU", "TOY's", "GALLERY"],
       autoStart: true,
     });
     typewriter.start();
@@ -50,7 +50,6 @@ const Footer = () => {
           <a className="link link-hover">
             <FaInstagram className="w-8 h-8"></FaInstagram>
           </a>
-          <a className="link link-hover"></a>
         </div>
       </div>
     </footer>
