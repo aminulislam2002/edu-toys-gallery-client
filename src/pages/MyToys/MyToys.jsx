@@ -10,7 +10,7 @@ const MyToys = () => {
   const [sortedData, setSortedData] = useState([...myToys]);
   const [ascendingData, setAscendingData] = useState(false);
 
-  const url = `http://localhost:5000/myToys?sellerEmail=${user?.email}`;
+  const url = `https://ph-assignment-number-eleven-server.vercel.app/myToys?sellerEmail=${user?.email}`;
 
   useEffect(() => {
     fetch(url)
@@ -33,7 +33,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toy/${id}`, {
+        fetch(`https://ph-assignment-number-eleven-server.vercel.app/toy/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -50,7 +50,7 @@ const MyToys = () => {
   };
 
   const handleSearch = () => {
-    const url = `http://localhost:5000/myToys?name=${searchName}`;
+    const url = `https://ph-assignment-number-eleven-server.vercel.app/myToys?name=${searchName}`;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {

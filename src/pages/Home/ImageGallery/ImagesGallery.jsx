@@ -6,7 +6,7 @@ const ImagesGallery = () => {
   const [showAllData, setShowAllData] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://ph-assignment-number-eleven-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
