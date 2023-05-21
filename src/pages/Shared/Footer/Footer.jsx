@@ -1,12 +1,22 @@
-import logo from "../../../assets/logo.png";
+import { useEffect } from "react";
+import logo from "../../../assets/logo-1.png";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import Typewriter from "typewriter-effect/dist/core";
 
 const Footer = () => {
+  useEffect(() => {
+    const typewriter = new Typewriter("#typewriter", {
+      strings: ["ABC", "TOY", "SHOP"],
+      autoStart: true,
+    });
+    typewriter.start();
+  }, []);
+
   return (
-    <footer className="footer p-10 bg-base-200 text-base-content">
+    <footer className="footer p-10 bg-black text-white">
       <div>
         <img src={logo} className="w-40 h-14" alt="" />
-        <h3 className="text-center font-semibold text-2xl text-purple-800">ABC TOY SHOPE</h3>
+        <div className="text-center font-semibold text-2xl text-purple-800" id="typewriter"></div>
       </div>
       <div>
         <span className="footer-title">Products</span>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/logo-1.png";
 
 const NavigationBar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -28,16 +28,22 @@ const NavigationBar = () => {
           All Toys
         </Link>
       </li>
-      <li>
-        <Link to="/myToys" className="text-white hover:text-gray-300">
-          My Toys
-        </Link>
-      </li>
-      <li>
-        <Link to="/addToy" className="text-white hover:text-gray-300">
-          Add a Toy
-        </Link>
-      </li>
+      {user ? (
+        <>
+          <li>
+            <Link to="/myToys" className="text-white hover:text-gray-300">
+              My Toys
+            </Link>
+          </li>
+          <li>
+            <Link to="/addToy" className="text-white hover:text-gray-300">
+              Add a Toy
+            </Link>
+          </li>
+        </>
+      ) : (
+        ""
+      )}
       <li>
         <Link to="/blogs" className="text-white hover:text-gray-300">
           Blogs
@@ -79,13 +85,15 @@ const NavigationBar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </label>
-          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-purple-600 rounded-box w-52">
+          <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-blue-200 rounded-box w-52">
             {navItems}
           </ul>
         </div>
-        <div>
-          <img src={logo} className="w-40 h-14" alt="" />
-          <h3 className="text-center font-semibold text-2xl text-red-600">ABC TOY SHOP</h3>
+        <div className="flex items-center">
+          <img src={logo} className="w-10 h-10 rounded-xl mr-2" alt="" />
+          <h3 className="text-3xl font-bold">
+            <span className="text-purple-600">ABC</span> TOY SHOP
+          </h3>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -93,7 +101,7 @@ const NavigationBar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <img className="w-20 h-10 rounded-full" src={user?.photoURL} alt={user?.displayName} title={user?.displayName} />
+          <img className="w-15 h-8 rounded-full" src={user?.photoURL} alt={user?.displayName} title={user?.displayName} />
         ) : (
           <Link to="/logIn" className="text-white hover:text-gray-300">
             Profile
