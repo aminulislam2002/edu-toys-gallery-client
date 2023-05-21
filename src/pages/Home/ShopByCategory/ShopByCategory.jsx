@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -57,8 +59,8 @@ const ShopByCategory = () => {
                               <td>{category.quantity} pcs</td>
                             </tr>
                             <tr>
-                              <td className="font-medium">Seller Name:</td>
-                              <td>{category.sellerName}</td>
+                              <td className="font-medium">Product Code:</td>
+                              <td>{category.code}</td>
                             </tr>
                             <tr>
                               <td className="font-medium">Seller Email:</td>
@@ -66,7 +68,15 @@ const ShopByCategory = () => {
                             </tr>
                           </tbody>
                         </table>
-
+                        <div className="text-yellow-600">
+                          <Rating
+                            placeholderRating={category?.ratings?.number}
+                            readonly
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className="bg-yellow-600 text-2xl"></FaStar>}
+                            fullSymbol={<FaStar></FaStar>}
+                          />
+                        </div>
                         <div className="flex justify-center items-center mt-6">
                           <button className="btn border-none mr-2 bg-orange-500 hover:bg-orange-700">Add To Cart</button>
                           <button className="btn border-none bg-red-500 hover:bg-red-700">

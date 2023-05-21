@@ -1,4 +1,6 @@
+import { FaRegStar, FaStar } from "react-icons/fa";
 import { HiOutlinePaperAirplane } from "react-icons/hi2";
+import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
 
 const SingleToyDetails = () => {
@@ -16,7 +18,15 @@ const SingleToyDetails = () => {
         <div className="w-1/2">
           <div className="w-3/4 mx-auto">
             <h1 className="text-4xl font-semibold">{name}</h1>
-            <div className="text-sm text-gray-500 mb-4">Ratings: {ratings}</div>
+            <div className="text-yellow-600">
+                          <Rating
+                            placeholderRating={ratings?.number}
+                            readonly
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className="bg-yellow-600 text-2xl"></FaStar>}
+                            fullSymbol={<FaStar></FaStar>}
+                          />
+                        </div>
             <p className="py-4">{description}</p>
             <table className="mb-4">
               <tbody>
